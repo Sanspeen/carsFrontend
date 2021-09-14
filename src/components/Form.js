@@ -59,7 +59,7 @@ const Form = () => {
                     placeholder = "CILINDRAJE"
                     className = "form-control"
                     name = "cylinder_capacity"
-                    {...register("cylinder_capacity", {required: true/*, min: 1886, max: 2022*/})}
+                    {...register("cylinder_capacity", {required: true, min: 1886, max: 2022})}
                 ></input>
                 {errors.cylinder_capacity && <span className = "text-danger text-small d-block mb-2"> El campo "Origen" es obligatorio.</span>}
                 <br></br>
