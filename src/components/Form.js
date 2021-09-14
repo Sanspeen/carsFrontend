@@ -35,9 +35,9 @@ const Form = () => {
                     placeholder = "MODELO"
                     className = "form-control"
                     name = "model"
-                    {...register("model", {required: true})}
+                    {...register("model", {required: true, min: 1886, max: 2022})}
                 ></input>
-                {errors.model && <span className = "text-danger text-small d-block mb-2"> El campo "Modelo" es obligatorio.</span>}
+                {errors.model && <span className = "text-danger text-small d-block mb-2"> El campo "Modelo" es obligatorio y debe ser mayor que 1886 y menor que 2023.</span>}
                 <br></br>
 
                 <input
@@ -49,7 +49,8 @@ const Form = () => {
                 ></input>
                 {errors.origin && <span className = "text-danger text-small d-block mb-2"> El campo "Origen" es obligatorio.</span>}
                 <br></br>
-
+                <br></br>
+                <h6>¿Es electrico?</h6>
                 <select type = "text" name="isElectric"  className="form-select form-select-lg mb-3" aria-label=".form-select-lg example" {...register("isElectric", {required: true})}>
                     <option value={true}>Sí</option>
                     <option value={false} selected>No</option>
@@ -59,9 +60,9 @@ const Form = () => {
                     placeholder = "CILINDRAJE"
                     className = "form-control"
                     name = "cylinder_capacity"
-                    {...register("cylinder_capacity", {required: true, min: 1886, max: 2022})}
+                    {...register("cylinder_capacity", {required: true, min: 800, max: 8383})}
                 ></input>
-                {errors.cylinder_capacity && <span className = "text-danger text-small d-block mb-2"> El campo "Origen" es obligatorio.</span>}
+                {errors.cylinder_capacity && <span className = "text-danger text-small d-block mb-2"> El campo "CILINDRAJE" es obligatorio y debe ser mayor que 800 y menor que 8384.</span>}
                 <br></br>
 
                 <center><button className="btn btn-primary" type="submit">AGREGAR</button></center>
