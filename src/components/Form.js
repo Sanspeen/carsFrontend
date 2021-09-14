@@ -18,7 +18,7 @@ const Form = () => {
     return ( 
         <Fragment >
             <center><h1>INGRESE LOS DATOS DE SU VEHICULO.</h1></center><br></br>
-            <form className = "col-sm" onSubmit = {handleSubmit(onSubmit)} border: 2px>
+            <form className = "col-sm" onSubmit = {handleSubmit(onSubmit)}>
 
                 <input
                     type = "text"
