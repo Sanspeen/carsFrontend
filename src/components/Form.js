@@ -5,12 +5,20 @@ const Form = () => {
 
     const {register, formState: {errors }, handleSubmit} = useForm();
 
+    const [cars, setcars] = useState([])
 
+    const onSubmit = (data, e) =>{
+        setcars([
+            ...cars,
+            data
+        ])
+        e.target.reset();
+    }
 
     return ( 
-        <Fragment className = "col-sm">
+        <Fragment >
             <center><h1>INGRESE LOS DATOS DE SU VEHICULO.</h1></center><br></br>
-            <form>
+            <form className = "col-sm" onSubmit = {handleSubmit(onSubmit)}>
 
                 <input
                     type = "text"
@@ -44,7 +52,10 @@ const Form = () => {
                     name = "mark"
                 ></input><br></br>
 
+                <center><button className="btn btn-primary" type="submit">AGREGAR</button></center>
+
             </form>
+
         </Fragment>
      );
 }
