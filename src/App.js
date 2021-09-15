@@ -1,11 +1,11 @@
 import Form from "./components/Form";
-import ShowContent from "./components/ShowContent";
+import CarList from "./components/CarList";
 
 function App() {
   return (
     <div className="container mt-5">
       <Form></Form>
-      <ShowContent></ShowContent>
+      <CarList></CarList>
     </div>
   );
 }

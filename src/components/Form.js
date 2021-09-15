@@ -15,7 +15,7 @@ const Form = () => {
         e.target.reset();
     }
 
-    return ( 
+    return (
         <Fragment >
             <center><h1>INGRESE LOS DATOS DE SU VEHICULO.</h1></center><br></br>
             <form className = "col-sm" onSubmit = {handleSubmit(onSubmit)}>
@@ -70,7 +70,7 @@ const Form = () => {
             </form>
 
         </Fragment>
-     );
+);
 }
- 
+
 export default Form;
