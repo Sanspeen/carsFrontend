@@ -1,3 +1,6 @@
+table{
+    margin-bottom: 100px;
+}
 
 thead{
     background: #0d6efd;
@@ -16,8 +19,6 @@ thead{
 }
 
 #cars tr:nth-child(even){background-color: #f2f2f2;}
-
-#cars tr:hover {background-color: #ddd;}
 
 #cars th {
     padding-top: 12px;

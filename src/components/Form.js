@@ -1,24 +1,50 @@
-import React, {Fragment, useState} from 'react';
+import React, {Fragment, useState, useContext} from 'react';
 import { useForm } from 'react-hook-form';
+import {Store} from '../utils/Store.js'
+import '../styles/Form.css'
 
 const Form = () => {
 
+    const { dispatch, state } = useContext(Store);
+
     const {register, formState: {errors }, handleSubmit} = useForm();
 
-    const [cars, setcars] = useState([])
-
     const onSubmit = (data, e) =>{
-        setcars([
-            ...cars,
-            data
-        ])
+        addCar(data)
         e.target.reset();
+    }
+
+    const addCar = (data)=>{
+        const request = {
+            id: null,
+            mark: data.mark,
+            model: data.model,
+            origin: data.origin,
+            cylinder_capacity: data.cylinder_capacity,
+            electric: data.isElectric
+        };
+
+        fetch("http://localhost:8080/api/cars/saveCar", {
+        method: "POST",
+        body: JSON.stringify(request),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+        })
+        .then(response => response.json())
+        .then((car) => {
+            fetch("http://localhost:8080/api/cars/list")
+            .then(response => response.json())
+            .then((list) => {
+                dispatch({ type: "update-list-category", list })
+            })
+        });
     }
 
     return (
         <Fragment >
             <center><h1>INGRESE LOS DATOS DE SU VEHICULO.</h1></center><br></br>
-            <form className = "col-sm" onSubmit = {handleSubmit(onSubmit)}>
+            <form className = "form-car  col-sm" onSubmit = {handleSubmit(onSubmit)}>
 
                 <input
                     type = "text"

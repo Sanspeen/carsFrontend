@@ -1,17 +1,21 @@
-import React,{useEffect, useState} from 'react';
+import React,{useEffect, useState, useContext} from 'react';
+import {Store} from  '../utils/Store.js'
 import '../styles/Table.css'
 
 const CarList = () => {
 
     const [cars, setcars] = useState([])
 
+    const { dispatch, state } = useContext(Store);
+
     useEffect(() => {
         fetch("http://localhost:8080/api/cars/list")
             .then(response => response.json())
-            .then(list => {
-                setcars(list)
+            .then((list) => {
+            dispatch({ type: "update-list-category", list })
             })
-    }, []);
+
+    }, [state.cars.list.length, dispatch]);
 
 
     return (
@@ -24,18 +28,16 @@ const CarList = () => {
                     <td>Modelo</td>
                     <td>Origen</td>
                     <td>Cilindraje</td>
-                    <td>Electrico</td>
                     </tr>
                 </thead>
                 <tbody>
-                    {cars.map((car) => {
+                    {state.cars.list.map((car) => {
                     return <tr key={car.id}>
                         <td>{car.id}</td>
                         <td>{car.mark}</td>
                         <td>{car.model}</td>
                         <td>{car.origin}</td>
                         <td>{car.cylinder_capacity}</td>
-                        <td>{car.electric}</td>
                     </tr>
                     })}
                 </tbody>
